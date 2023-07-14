@@ -54,9 +54,14 @@ class ImageController(object):
     
     @staticmethod
     def getImage() -> str:
-        path = input("Path to image: ")
+        path = input("Enter the path to the image: ")
         return path
     
+    def processImage(self, resizeValue) -> None:
+        self.convertToBW()
+        self.resize(resizeValue)
+        return self.newImageArray()
+
     def convertToBW(self) -> None:
         self.image = self.image.convert(mode="1" , dither=None)
 
